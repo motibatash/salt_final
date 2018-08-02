@@ -1,0 +1,9 @@
+version: '3'
+
+services:
+  master-salt:
+    build: ./mas
+    volumes:
+      - ./mas:/srv/salt
+    ports:
+      - 5022:22
