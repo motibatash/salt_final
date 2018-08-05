@@ -1,0 +1,4 @@
+mom:
+  'M*':
+    - envname
+    

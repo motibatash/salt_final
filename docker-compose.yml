@@ -1,9 +1,35 @@
-version: '3'
-
+version: '2.2'
 services:
-  master-salt:
-    build: ./mas
+  master:
+    build:
+      context: .
+      dockerfile: ./Dockerfile.master
+    hostname: Master
     volumes:
-      - ./mas:/srv/salt
-    ports:
-      - 5022:22
+      - ./mas/srv:/srv
+      - ./mas/roots:/etc/salt/master.d
+    depends_on:
+      - mom  
+  minion1:
+    build:
+      context: .
+      dockerfile: ./Dockerfile.minion1
+    hostname: Minion1
+    depends_on:
+      - master
+  mom:
+    build:
+      context: .
+      dockerfile: ./Dockerfile.mom
+    hostname: Mom
+    volumes:
+      - ./mom/srv:/srv
+      - ./mom/roots:/etc/salt/master.d
+  minion2:
+    build:
+      context: .
+      dockerfile: ./Dockerfile.minion2
+    hostname: Minion2
+    depends_on:
+      - mom
+

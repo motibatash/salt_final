@@ -1,0 +1,3 @@
+mas:
+  'Minion*':
+    - envname
