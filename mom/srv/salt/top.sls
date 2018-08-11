@@ -1,3 +1,4 @@
 mom:
-  '*':
+  'M*':
+    - test
     - envname

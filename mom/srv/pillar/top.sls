@@ -1,0 +1,4 @@
+{{ saltenv }}:
+  'M*':
+    - envname
+    - copyenv
